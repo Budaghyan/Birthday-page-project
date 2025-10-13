@@ -48,6 +48,16 @@ const music = document.getElementById("bg-music");
   }
   startCountdown();
 
+function getCurrentDateTime() {
+  const now = new Date();
+  const day = String(now.getDate()).padStart(2, '0');
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const year = now.getFullYear();
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  return `${day}.${month}.${year} ${hours}:${minutes}`;
+}
+
 document.getElementById("status").addEventListener("change", function () {
   const status = this.value;
   const fields = document.getElementById("extra-fields");
@@ -72,6 +82,7 @@ document.getElementById("rsvpForm").addEventListener("submit", function(e){
   let phone = document.getElementById("phone").value.trim();
   const count = document.getElementById("count").value.trim();
   const status = document.getElementById("status").value;
+  const registrationDate = getCurrentDateTime();
 
   if (!name || !phone || !count || !status) {
     showPopup("Խնդրում ենք լրացնել բոլոր պարտադիր նշված դաշտերը։");
@@ -98,7 +109,7 @@ document.getElementById("rsvpForm").addEventListener("submit", function(e){
       return fetch(sheetAPI, {
         method: "POST",
         body: JSON.stringify({
-          data: [{ name, phone, count, status }]
+          data: [{ name, phone, count, status, registrationDate }]
         }),
         headers: { "Content-Type": "application/json" }
       })
