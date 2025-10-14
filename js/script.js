@@ -13,14 +13,17 @@ const music = document.getElementById("bg-music");
   });
 
   let secretClicks = 0;
-  document.getElementById("main-card").addEventListener("click", () => {
+  const secCode = document.getElementById("sec-code");
+  
+  secCode.addEventListener("click", () => {
     secretClicks++;
     if (secretClicks === 5) {
-      showPopup("🎉 Սոսը մեծ սիրով սպասում է ձեզ 🎉");
+      showPopup("Դուք գտաք թաքնված հաղորդագրությունը։ Ձեզ սպասվում է անակնկալ:");
       secretClicks = 0;
     }
     setTimeout(() => secretClicks = 0, 2000);
   });
+
 
   function startCountdown() {
     const targetDate = new Date("2025-11-27T18:00:00");
