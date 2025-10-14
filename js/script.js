@@ -13,41 +13,63 @@ const music = document.getElementById("bg-music");
   });
 
   let secretClicks = 0;
+  let clickResetTimer = null;
   const secCode = document.getElementById("sec-code");
   
-  secCode.addEventListener("click", () => {
+  secCode.addEventListener("click", function (e) {
     secretClicks++;
+  
+    if (clickResetTimer) clearTimeout(clickResetTimer);
+    clickResetTimer = setTimeout(() => {
+      secretClicks = 0;
+      clickResetTimer = null;
+    }, 2000);
+  
     if (secretClicks === 5) {
       secCode.classList.add("spin");
   
       setTimeout(() => {
         secCode.classList.remove("spin");
   
-        secCode.innerHTML = "🎁";
-        secCode.classList.add("gift");
+        secCode.textContent = "🎁";
+        secCode.classList.add("gift", "gift-opening");
         secCode.style.cursor = "pointer";
   
-        secCode.addEventListener("click", showGiftMessage, { once: true });
-      }, 1500);
+        secCode.addEventListener("click", openGift, { once: true });
   
-      secretClicks = 0;
+        secretClicks = 0;
+        if (clickResetTimer) { clearTimeout(clickResetTimer); clickResetTimer = null; }
+      }, 1500);
     }
-    setTimeout(() => secretClicks = 0, 2000);
   });
   
-  function showGiftMessage() {
-    const paper = document.createElement("div");
-    paper.classList.add("paper");
-    paper.innerHTML = "🎉 Շնորհավորում ենք,<br>Դուք գտաք թաքնված հաղորդագրությունը։<br>Այդ օրը ձեզ սպասվում է հետաքրքիր անակնկալ! 🎁";
+  function openGift(e) {
+    const giftEl = e.currentTarget;
   
-    const parent = secCode.parentElement;
-    parent.replaceChild(paper, secCode);
+    giftEl.style.transform = "scale(1.25) rotate(-10deg)";
+    giftEl.style.transition = "transform 0.45s ease";
   
     setTimeout(() => {
-      paper.classList.add("show");
-    }, 100);
+      giftEl.style.transform = "scale(1) rotate(0deg)";
+    }, 450);
   
-    celebrate();
+    setTimeout(() => {
+      const paper = document.createElement("div");
+      paper.classList.add("paper");
+      paper.innerHTML = "🎉 Շնորհավորում ենք,\nԴուք գտաք թաքնված հաղորդագրությունը։\nԱյդ օրը ձեզ սպասվում է հետաքրքիր անակնկալ: 🎁";
+  
+      if (giftEl.parentElement) {
+        giftEl.parentElement.replaceChild(paper, giftEl);
+      } else {
+        document.body.appendChild(paper);
+      }
+  
+      setTimeout(() => {
+        paper.classList.add("show");
+      }, 50);
+  
+      celebrate();
+    }, 600);
   }
 
   function startCountdown() {
