@@ -22,8 +22,10 @@ const music = document.getElementById("bg-music");
   
       setTimeout(() => {
         secCode.classList.remove("spin");
+  
         secCode.innerHTML = "🎁";
         secCode.classList.add("gift");
+        secCode.style.cursor = "pointer";
   
         secCode.addEventListener("click", showGiftMessage, { once: true });
       }, 1500);
@@ -38,7 +40,8 @@ const music = document.getElementById("bg-music");
     paper.classList.add("paper");
     paper.innerHTML = "🎉 Շնորհավորում ենք,<br>Դուք գտաք թաքնված հաղորդագրությունը։<br>Այդ օրը ձեզ սպասվում է հետաքրքիր անակնկալ! 🎁";
   
-    sosiName.replaceWith(paper);
+    const parent = secCode.parentElement;
+    parent.replaceChild(paper, secCode);
   
     setTimeout(() => {
       paper.classList.add("show");
@@ -46,8 +49,6 @@ const music = document.getElementById("bg-music");
   
     celebrate();
   }
-
-
 
   function startCountdown() {
     const targetDate = new Date("2025-11-27T18:00:00");
