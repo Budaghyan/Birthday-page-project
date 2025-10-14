@@ -18,11 +18,35 @@ const music = document.getElementById("bg-music");
   secCode.addEventListener("click", () => {
     secretClicks++;
     if (secretClicks === 5) {
-      showPopup("Շնորհավորում ենք, Դուք գտաք թաքնված հաղորդագրությունը։ Այդ օրը ձեզ սպասվում է հետաքրքիր անակնկալ: 🎁");
+      secCode.classList.add("spin");
+  
+      setTimeout(() => {
+        secCode.classList.remove("spin");
+        secCode.innerHTML = "🎁";
+        secCode.classList.add("gift");
+  
+        secCode.addEventListener("click", showGiftMessage, { once: true });
+      }, 1500);
+  
       secretClicks = 0;
     }
     setTimeout(() => secretClicks = 0, 2000);
   });
+  
+  function showGiftMessage() {
+    const paper = document.createElement("div");
+    paper.classList.add("paper");
+    paper.innerHTML = "🎉 Շնորհավորում ենք,<br>Դուք գտաք թաքնված հաղորդագրությունը։<br>Այդ օրը ձեզ սպասվում է հետաքրքիր անակնկալ! 🎁";
+  
+    sosiName.replaceWith(paper);
+  
+    setTimeout(() => {
+      paper.classList.add("show");
+    }, 100);
+  
+    celebrate();
+  }
+
 
 
   function startCountdown() {
