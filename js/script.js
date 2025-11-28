@@ -73,7 +73,7 @@ const music = document.getElementById("bg-music");
   }
 
   function startCountdown() {
-    const targetDate = new Date("2025-11-27T18:00:00");
+    const targetDate = new Date("2025-07-20T18:00:00");
     const countdownEl = document.getElementById("countdown");
 
     function updateCountdown() {
@@ -143,7 +143,7 @@ document.getElementById("rsvpForm").addEventListener("submit", function(e){
   if (phone.startsWith("0")) phone = "374" + phone.slice(1);
   if (phone.startsWith("3740")) phone = "374" + phone.slice(4);
 
-  const sheetAPI = "here should be API link"; //https://sheetdb.io -> you can create here account and add that API link
+  const sheetAPI = "here should be API link"; //https://sheetdb.io -> here you can create your account and add that API link for requests to google sheet
 
   fetch(`${sheetAPI}/search?phone=${encodeURIComponent(phone)}`)
     .then(res => res.json())
