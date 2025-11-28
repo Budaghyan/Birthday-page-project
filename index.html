@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🎂 Սոսի տարեդարձ 🎂</title>
+  <title>Someone birthday</title>
 
   <link rel="icon" type="image/x-icon" href="images/favicon.ico">
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
@@ -20,7 +20,7 @@
   <audio id="bg-music" loop>
     <source src="music/happy_birthday.mp3" type="audio/mpeg">
   </audio>
-  <button id="music-btn">🔊 Պարե՞նք</button>
+  <button id="music-btn">🔊 Dance</button>
 
   <canvas id="confetti-canvas"></canvas>
 
@@ -30,34 +30,34 @@
       <p id="popup-message"></p>
 
       <div id="calendar-section" aria-hidden="true" style="display:none;">
-        <a id="calendar-link" href="#" download="Sosi_birthday.ics">Ավելացնել iCloud օրացույցին</a>
-        <a id="google-calendar-link" href="#" target="_blank">Ավելացնել Google օրացույցին</a>
+        <a id="calendar-link" href="#" download="Sosi_birthday.ics">Add to iCloud calendar</a>
+        <a id="google-calendar-link" href="#" target="_blank">Add to Google calendar</a>
       </div>
 
-      <button class="popup-close-btn" onclick="closePopup()">Փակել</button>
+      <button class="popup-close-btn" onclick="closePopup()">Close</button>
     </div>
   </div>
 
   <div class="card" id="main-card">
-    <h1>Մենք շուտով 5 տարեկան ենք</h1>
-    <p style="color: #fffff0; font-size: 1.2em;">Սիրով հրավիրում ենք ձեզ` <br>մասնակցելու <b id="sec-code">Սոսի</b> ծննդյան և մատաղի արարողությանը և մեզ հետ կիսելու այդ կարևոր ու հիշարժան օրը</p>
-    <p style="color: #fffff0; font-size: 1.2em;">Սիրով կսպասենք ձեզ՝ <br><span style="text-align: center;"><b>📅 27 Նոյեմբերի 2025<br>📍 Կիլիկիո գարդեն <br>🕕 Ժամը 18:00</span></b></p>
+    <h1>We are soon X years old.</h1>
+    <p style="color: #fffff0; font-size: 1.2em;">We cordially invite you to <br>to participate <b id="sec-code">Someone</b> at the birthday party and to share that important and memorable day with us</p>
+    <p style="color: #fffff0; font-size: 1.2em;">We will be waiting for you with love, <br><span style="text-align: center;"><b>📅 XX July YYYY<br>📍 Restaurant name <br>🕕 Time 15:00</span></b></p>
     <p id="countdown"></p>
-    <p><a href="https://yandex.com/maps/-/CLBII2kZ" style="color: #fffff0; font-size: 1.2em;"><b>Ինչպե՞ս հասնել</b></a></p>
-    <h3 style="font-style: normal;">Խնդրում ենք հաստատել ձեր հրավերը ստորև</h3>
+    <p><a href="https://yandex.com/maps" style="color: #fffff0; font-size: 1.2em;"><b>How to get there</b></a></p>
+    <h3 style="font-style: normal;">Please confirm your invitation below.</h3>
     
     <form id="rsvpForm">
       <select id="status">
-        <option value="" disabled selected hidden>Մասնակցելո՞ւ եք *</option>
-        <option value="Այո">Մեծ սիրով</option>
-        <option value="Ոչ">Ցավոք ոչ</option>
+        <option value="" disabled selected hidden>Will you participate? *</option>
+        <option value="Այո">Yes</option>
+        <option value="Ոչ">No</option>
       </select><br>
     
       <div id="extra-fields" style="display: none;">
-        <input type="text" id="name" placeholder="Անուն ազգանուն *"><br>
-        <input type="tel" id="phone" placeholder="Հեռախոսահամար * (0XXYYYYYY)" inputmode="tel"><br>
-        <input type="number" id="count" placeholder="Անձանց քանակ *" inputmode="numeric" min="1"><br>
-        <button type="submit">Հաստատել</button>
+        <input type="text" id="name" placeholder="Name Surname *"><br>
+        <input type="tel" id="phone" placeholder="Phone * (0XXYYYYYY)" inputmode="tel"><br>
+        <input type="number" id="count" placeholder="Participants count *" inputmode="numeric" min="1"><br>
+        <button type="submit">Confirm</button>
       </div>
     </form>
 
@@ -67,6 +67,7 @@
   <script src="js/script.js"></script>
 </body>
 </html>
+
 
 
 
