@@ -56,7 +56,7 @@ const music = document.getElementById("bg-music");
     setTimeout(() => {
       const paper = document.createElement("div");
       paper.classList.add("paper");
-      paper.innerHTML = "🎉Շնորհավորում ենք!!!🎉<br>Դուք գտաք թաքնված հաղորդագրությունը, և ունեք փոքրիկ անակնկալ Սոսի կողմից։🎁";
+      paper.innerHTML = "🎉Congratulations!!!!🎉<br>You found the hidden message, and you have a little surprise from Someone.🎁";
   
       if (giftEl.parentElement) {
         giftEl.parentElement.replaceChild(paper, giftEl);
@@ -81,7 +81,7 @@ const music = document.getElementById("bg-music");
       const diff = targetDate - now;
 
       if (diff <= 0) {
-        countdownEl.innerHTML = "🎉 Տոնակատարությունը սկսվել է 🎉";
+        countdownEl.innerHTML = "🎉 The celebration has begun. 🎉";
         return;
       }
 
@@ -90,7 +90,7 @@ const music = document.getElementById("bg-music");
       const minutes = Math.floor((diff / (1000 * 60)) % 60);
       const seconds = Math.floor((diff / 1000) % 60);
 
-      countdownEl.innerHTML = `Մնացել է՝ <b>${days}</b> օր <b>${hours}</b> ժամ <b>${minutes}</b> րոպե <b>${seconds}</b> վայրկյան`;
+      countdownEl.innerHTML = `Remaining՝ <b>${days}</b> days <b>${hours}</b> hours <b>${minutes}</b> minutes <b>${seconds}</b> seconds`;
     }
 
     updateCountdown();
@@ -112,16 +112,16 @@ document.getElementById("status").addEventListener("change", function () {
   const status = this.value;
   const fields = document.getElementById("extra-fields");
 
-  if (status === "Այո") {
+  if (status === "Yes") {
     fields.style.display = "block";
-  } else if (status === "Ոչ") {
+  } else if (status === "No") {
     fields.style.display = "none";
     document.getElementById("rsvpForm").reset();
     document.getElementById("rsvpForm").style.display = "none";
     document.querySelector("h3").style.display = "none";
     const directionsLink = document.querySelector('a[href*="maps"]');
     if (directionsLink) directionsLink.style.display = "none";
-    showPopup("Հուսով ենք կհանդիպենք հաջորդ տարի 😉😉", false);
+    showPopup("We hope to see you next year. 😉😉", false);
   }
 });
 
@@ -135,7 +135,7 @@ document.getElementById("rsvpForm").addEventListener("submit", function(e){
   const registrationDate = getCurrentDateTime();
 
   if (!name || !phone || !count || !status) {
-    showPopup("Խնդրում ենք լրացնել բոլոր պարտադիր նշված դաշտերը։");
+    showPopup("Please fill out all required fields.");
     return;
   }
 
@@ -143,13 +143,13 @@ document.getElementById("rsvpForm").addEventListener("submit", function(e){
   if (phone.startsWith("0")) phone = "374" + phone.slice(1);
   if (phone.startsWith("3740")) phone = "374" + phone.slice(4);
 
-  const sheetAPI = "https://sheetdb.io/api/v1/73phymm5nctlc";
+  const sheetAPI = "here should be API link"; //https://sheetdb.io -> you can create here account and add that API link
 
   fetch(`${sheetAPI}/search?phone=${encodeURIComponent(phone)}`)
     .then(res => res.json())
     .then(data => {
       if (Array.isArray(data) && data.length > 0) {
-        showPopup(`Հարգելի <b>${name}</b>, ձեր հրավերն արդեն հաստատված է։ Սիրով կսպասենք ձեզ։`);
+        showPopup(`Dear <b>${name}</b>, Your invitation has already been confirmed. We look forward to seeing you.`);
         document.getElementById("rsvpForm").reset();
         document.getElementById("rsvpForm").style.display = "none";
         document.querySelector("h3").style.display = "none";
@@ -168,22 +168,22 @@ document.getElementById("rsvpForm").addEventListener("submit", function(e){
         document.getElementById("rsvpForm").reset();
         document.getElementById("rsvpForm").style.display = "none";
         document.querySelector("h3").style.display = "none";
-        showPopup(`🎉 Հարգելի <b>${name}</b>, դուք հաջողությամբ գրանցվեցիք 🎉`, true);
+        showPopup(`🎉 Dear <b>${name}</b>, You have successfully registered. 🎉`, true);
         generateCalendarFile();
         celebrate();
       });
     })
     .catch(() => {
-      showPopup(`Հարգելի <b>${name}</b>, գրանցվելու ընթացքում առաջացել է խնդիր, խնդրում ենք փորձեք կրկին`);
+      showPopup(`Dear <b>${name}</b>, There was a problem registering, please try again.`);
     });
 });
 
 function generateCalendarFile() {
-  const eventTitle = "🎂 Սոսի 5-րդ տարեդարձը 🎂";
-  const eventDescription = "Սիրով հրավիրում ենք մասնակցելու Սոսի ծննդյան և մատաղի արարողությանը։";
-  const eventLocation = "Կիլիկիո գարդեն";
-  const startDate = new Date("2025-11-27T18:00:00+04:00");
-  const endDate = new Date("2025-11-27T23:30:00+04:00");
+  const eventTitle = "🎂 Someones birthday 🎂";
+  const eventDescription = "We cordially invite you to participate in Someones birthday celebration.";
+  const eventLocation = "Restaurant name";
+  const startDate = new Date("2025-07-20T18:00:00+04:00");
+  const endDate = new Date("2025-07-20T23:30:00+04:00");
 
   function formatDateToICS(date) {
     return date.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
